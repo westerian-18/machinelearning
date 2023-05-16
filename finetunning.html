@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>BERT</title>
+    <link rel="stylesheet" type="text/css" href="home.css" />
+    <link rel="stylesheet" type="text/css" href="finetunning.css" />
+
+    <link rel="stylesheet" href="fonts-6/css/all.css" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  </head>
+
+  <body>
+    <div class="navbar">
+      <div class="header-right">
+        <img class="image" src="resource/logo.png" />
+
+        <a data-active="demo" href="demo.html">
+          <i class="fa fa-play" style="color: #ce8dbc"></i> DEMO
+        </a>
+
+        <a data-active="fine" href="finetunning.html"
+          ><i class="fa fa-code-fork" style="color: #ce8dbc"></i>
+          FINE-TUNNING</a
+        >
+
+        <a data-active="pre" href="preTrainning.html"
+          ><i class="fa-solid fa-gears" style="color: #ce8dbc"></i>
+          PRE-TRAINING</a
+        >
+
+        <a data-active="home1" href="home.html"
+          ><i class="fa-solid fa-house" style="color: #ce8dbc"></i> HOME</a
+        >
+      </div>
+    </div>
+    <main>
+      <nav class="section-nav">
+        <ol>
+          <li><a href="#introduction">Giới thiệu về Fine-tunning</a></li>
+          <li>
+            <a href="#advantage">Lợi ích khi sử dụng Fine-tunning</a>
+          </li>
+          <li>
+            <a href="#disadvantage">Khó khăn khi sử dụng Fine-tunning</a>
+          </li>
+          <li>
+            <a href="#process">Tiến trình áp dụng Fine-tunning</a>
+          </li>
+        </ol>
+      </nav>
+      <div>
+        <div class="title">
+          <h1>FINE-TUNNING</h1>
+        </div>
+        <img id="fitun" src="resource/fine-tunning.png" />
+        <section id="introduction">
+          <h2>Giới thiệu về Fine-tunning</h2>
+          <p>
+            Tinh chỉnh BERT là quá trình điều chỉnh mô hình BERT được đào tạo
+            trước cho một tác vụ hoặc miền cụ thể bằng cách cập nhật các tham số
+            của nó với một lượng nhỏ dữ liệu được gắn nhãn.<br />
+            Ví dụ: nếu bạn muốn sử dụng BERT để phân tích tình cảm, bạn cần tinh
+            chỉnh nó bằng bộ dữ liệu văn bản và nhãn tình cảm tương ứng của
+            chúng. Fine-tunning rất đơn giản vì cơ chế tự chú ý trong
+            Transformer cho phép BERT lập mô hình nhiều tác vụ xuôi dòng—cho dù
+            chúng liên quan đến văn bản đơn lẻ hay cặp văn bản—bằng cách hoán
+            đổi các đầu vào và đầu ra thích hợp.<br />
+            Thay vì mã hóa độc lập các cặp văn bản trước khi áp dụng chú ý chéo
+            hai chiều, BERT sử dụng cơ chế tự chú ý để hợp nhất hai giai đoạn
+            này, vì mã hóa một cặp văn bản được nối với khả năng tự chú ý bao
+            gồm sự chú ý chéo hai chiều giữa hai câu một cách hiệu quả.<br />
+            Đối với mỗi tác vụ, chúng tôi chỉ cần cắm đầu vào và đầu ra của tác
+            vụ cụ thể vào BERT và fine-tunning tất cả các tham số từ đầu đến
+            cuối.
+          </p>
+        </section>
+        <section id="advantage">
+          <h2>Lợi ích khi sử dụng Fine-tunning</h2>
+          <p>
+            &#10004; Tận dụng kiến thức ngữ nghĩa và cú pháp phong phú của BERT
+            để cải thiện hiệu suất và tính tổng quát của mô hình. <br />
+            &#10004; Giảm nhu cầu về kỹ thuật của các tính năng cũng như các
+            kiến thức chuyên ngành (vì BERT có thể tự động trích xuất các đặc
+            trưng của văn bản đầu vào). Giúp đơn giản hóa quy trình triển khai
+            và phát triển mô hình. <br />
+            &#10004; Cho phép chuyển giao giữa các nhiệm vụ và lĩnh vực khác
+            nhau (vì BERT có khả năng năm bắt những điểm chung và riêng của
+            chúng), giúp việc tái sử dụng mô hình thuận lợi hơn.
+          </p>
+        </section>
+        <section id="disadvantage">
+          <h2>Khó khăn khi sử dụng Fine-tunning</h2>
+          <p>
+            &#10008; Tốn kém về mặt tính toán và tốn thời gian (vì BERT là một
+            mô hình lớn và phức tạp, yêu cầu tài nguyên phần cứng và phần mềm
+            cao cấp.) <br />
+            &#10008; Nhạy cảm với chất lượng và số lượng của dữ liệu được gắn
+            nhãn (vì BERT có thể không hoạt động tốt trên dữ liệu quá khác với
+            dữ liệu trước khi đào tạo hoặc dữ liệu quá nhỏ) <br />
+            &#10008; khó diễn giải và giải thích, (vì BERT là một mô hình hộp
+            đen không cung cấp thông tin chi tiết rõ ràng về cách nó đưa ra dự
+            đoán hoặc những tính năng mà nó sử dụng.) <br />
+            &#10008; Một điểm đặc biệt ở BERT mà các model embedding trước đây
+            chưa từng có đó là kết quả huấn luyện có thể fine-tuning được. Chúng
+            ta sẽ thêm vào kiến trúc model một output layer để tùy biến theo tác
+            vụ huấn luyện.
+          </p>
+        </section>
+        <section id="process">
+          <h2>Tiến trình áp dụng Fine-tunning</h2>
+          <p>
+            Trong suốt quá trình fine-tuning thì toàn bộ các tham số của layers
+            học chuyển giao sẽ được fine-tune. Đối với các tác vụ sử dụng input
+            là một cặp sequence (pair-sequence) ví dụ như question and answering
+            thì ta sẽ thêm token khởi tạo là [CLS] ở đầu câu, token [SEP] ở giữa
+            để ngăn cách 2 câu. <br />
+            <br />
+            Gồm các bước sau: <br />
+            <br />
+            <b>Bước 1: </b>Embedding toàn bộ các token của cặp câu bằng các véc
+            tơ nhúng từ pretrain model. Các token embedding bao gồm cả 2 token
+            là [CLS] và [SEP] để đánh dấu vị trí bắt đầu của câu hỏi và vị trí
+            ngăn cách giữa 2 câu. 2 token này sẽ được dự báo ở output để xác
+            định các phần Start/End Spand của câu output.<br />
+            <b>Bước 2: </b> Các embedding véc tơ sau đó sẽ được truyền vào kiến
+            trúc multi-head attention với nhiều block code (thường là 6, 12 hoặc
+            24 blocks tùy theo kiến trúc BERT). Ta thu được một véc tơ output ở
+            encoder. <br />
+            <b>Bước 3:</b> Để dự báo phân phối xác suất cho từng vị trí từ ở
+            decoder, ở mỗi time step chúng ta sẽ truyền vào decoder véc tơ
+            output của encoder và véc tơ embedding input của decoder để tính
+            encoder-decoder attention (cụ thể về encoder-decoder attention là gì
+            các bạn xem lại mục 2.1.1). Sau đó projection qua liner layer và
+            softmax để thu được phân phối xác suất cho output tương ứng ở time
+            step. <br />
+            <b>Bước 4:</b> Trong kết quả trả ra ở output của transformer ta sẽ
+            cố định kết quả của câu Question sao cho trùng với câu Question ở
+            input. Các vị trí còn lại sẽ là thành phần mở rộng Start/End Span
+            tương ứng với câu trả lời tìm được từ câu input. <br />
+            <b>Lưu ý :</b>Quá trình huấn luyện chúng ta sẽ fine-tune lại toàn bộ
+            các tham số của model BERT đã cut off top linear layer và huấn luyện
+            lại từ đầu các tham số của linear layer mà chúng ta thêm vào kiến
+            trúc model BERT để customize lại phù hợp với bài toán. <br />
+            <br /><br />
+          </p>
+        </section>
+      </div>
+    </main>
+    <script>
+      window.addEventListener("DOMContentLoaded", () => {
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            const id = entry.target.getAttribute("id");
+            if (entry.intersectionRatio > 0) {
+              document
+                .querySelector(`nav li a[href="#${id}"]`)
+                .parentElement.classList.add("active");
+            } else {
+              document
+                .querySelector(`nav li a[href="#${id}"]`)
+                .parentElement.classList.remove("active");
+            }
+          });
+        });
+
+        // Track all sections that have an `id` applied
+        document.querySelectorAll("section[id]").forEach((section) => {
+          //console.log(section);
+          observer.observe(section);
+        });
+      });
+      //window.scrollTo(0, 1000);
+    </script>
+  </body>
+</html>

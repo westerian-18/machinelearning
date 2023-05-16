@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>BERT</title>
+    <link rel="stylesheet" type="text/css" href="home.css" />
+    <link rel="stylesheet" href="fonts-6/css/all.css" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  </head>
+
+  <body>
+    <div class="navbar">
+      <div class="header-right">
+        <img class="image" src="resource/logo.png" />
+
+        <a data-active="demo" href="demo.html">
+          <i class="fa fa-play" style="color: #ce8dbc"></i> DEMO
+        </a>
+
+        <a data-active="fine" href="finetunning.html"
+          ><i class="fa fa-code-fork" style="color: #ce8dbc"></i>
+          FINE-TUNNING</a
+        >
+
+        <a data-active="pre" href="preTrainning.html"
+          ><i class="fa-solid fa-gears" style="color: #ce8dbc"></i>
+          PRE-TRAINING</a
+        >
+
+        <a data-active="home1" href="home.html"
+          ><i class="fa-solid fa-house" style="color: #ce8dbc"></i> HOME</a
+        >
+      </div>
+    </div>
+    <div class="content">
+      <div class="ima">
+        <img src="resource/ML.png" />
+      </div>
+      <div class="tit">
+        <h2>GIỚI THIỆU VỀ</h2>
+        <h1>BERT</h1>
+        <p>
+          BERT (Biểu diễn mã hóa hai chiều từ Transformer) là mô hình xử lý ngôn
+          ngữ tự nhiên được đào tạo trước (NLP) được giới thiệu bởi Google vào
+          năm 2018.<br />
+          BERT sử dụng kiến trúc transformer để học quan hệ ngữ cảnh giữa các
+          từ, làm cho nó trở thành lựa chọn phổ biến cho các tác vụ NLP khác
+          nhau như phân tích cảm xúc, trả lời câu hỏi và phân loại văn bản.
+          <span id="dots">...</span>
+        </p>
+      </div>
+    </div>
+    <div class="cont">
+      <p>
+        <div id="more">
+          <p>
+          Việc tinh chỉnh BERT cho các tác vụ cụ thể cũng cải thiện độ chính xác
+          của nó, và nó đã được sử dụng trong các tác vụ chuyên ngành như phân
+          loại tài liệu tài chính và phân tích văn bản y tế. <br />
+          BERT được thiết kế để đào tạo trước các biểu diễn hai chiều sâu từ văn
+          bản không được gắn nhãn bằng cách hòa hợp trên cả ngữ cảnh vế trái và
+          vế phải trong tất cả các lớp. <br />
+          Kết quả là, mô hình BERT được đào tạo trước có thể được tinh chỉnh chỉ
+          với một lớp bổ sung ở đầu ra để tạo ra các mô hình tiên tiến nhất cho
+          một loạt các tác vụ, chẳng hạn như trả lời câu hỏi và suy luận ngôn
+          ngữ, mà không cần thực hiện nhiều tác vụ sửa đổi kiến trúc cụ thể.
+          <br />
+          BERT đơn giản về mặt khái niệm và mạnh mẽ về mặt thực nghiệm. Nó đạt
+          được kết quả tiên tiến nhất trên mười một tác vụ xử lý ngôn ngữ tự
+          nhiên, bao gồm cả việc đẩy điểm số GLUE lên 80,5% (cải thiện tuyệt đối
+          7,7% điểm), độ chính xác MultiNLI lên 86,7% (cải thiện tuyệt đối
+          4,6%), trả lời câu hỏi SQuAD v1.1 Bài kiểm tra F1 lên 93,2 (cải thiện
+          tuyệt đối 1,5 điểm) và Bài kiểm tra SQuAD v2.0 F1 lên 83,1 (5,1 điểm
+          cải thiện tuyệt đối).
+        </p>
+          <h2>Ứng dụng của BERT</h2>
+        </div>
+      </p>
+      <button onclick="myFunction()" id="myBtn">Read more</button>
+    </div>
+    <script>
+      function myFunction() {
+        var dots = document.getElementById("dots");
+        var moreText = document.getElementById("more");
+        var btnText = document.getElementById("myBtn");
+
+        if (dots.style.display === "none") {
+          dots.style.display = "inline";
+          btnText.innerHTML = "Read more";
+          moreText.style.display = "none";
+        } else {
+          dots.style.display = "none";
+          btnText.innerHTML = "Read less";
+          moreText.style.display = "inline";
+        }
+      }
+    </script>
+  </body>
+</html>
